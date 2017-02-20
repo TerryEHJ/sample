@@ -12,9 +12,10 @@
 */
 
 //静态页面
-get('/', 'StaticPagesController@home')->name('home');
-get('/help', 'StaticPagesController@help')->name('help');
-get('/about', 'StaticPagesController@about')->name('about');
+get('', 'StaticPagesController@home')->name('home');
+get('help', 'StaticPagesController@help')->name('help');
+get('about', 'StaticPagesController@about')->name('about');
+get('blank', 'StaticPagesController@blank')->name('blank');
 
 //用户操作
 get('signup', 'UsersController@create')->name('signup');
@@ -36,7 +37,7 @@ post('password/reset', 'Auth\PasswordController@postReset')->name('password.upda
 resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
 //粉丝系统
-get('/users/{id}/followings', 'UsersController@followings')->name('users.followings');
-get('/users/{id}/followers', 'UsersController@followers')->name('users.followers');
-post('/users/followers/{id}', 'FollowersController@store')->name('followers.store');
-delete('/users/followers/{id}', 'FollowersController@destroy')->name('followers.destroy');
+get('users/{id}/followings', 'UsersController@followings')->name('users.followings');
+get('users/{id}/followers', 'UsersController@followers')->name('users.followers');
+post('users/followers/{id}', 'FollowersController@store')->name('followers.store');
+delete('users/followers/{id}', 'FollowersController@destroy')->name('followers.destroy');

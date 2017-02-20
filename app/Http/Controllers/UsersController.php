@@ -33,7 +33,7 @@ class UsersController extends Controller
         return view('users.index', compact('users'));
     }
 
-    //个人中心
+    //个人页面
     public function show($id)
     {
         $user = User::findOrFail($id);
@@ -49,13 +49,13 @@ class UsersController extends Controller
         return view('users.create');
     }
 
-    //注册提交逻辑
+    //注册提交
     public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:50',
             'email' => 'required|email|unique:users|max:255',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6|max:16'
         ]);
 
         $user = User::create([
@@ -66,10 +66,10 @@ class UsersController extends Controller
 
         $this->sendEmailConfirmationTo($user);
         session()->flash('success', '验证邮件已发送到您的注册邮箱上，请注意查收。');
-        return redirect('/');
+        return redirect('/blank');
     }
 
-    //发送激活邮件
+    //发送验证邮件
     protected function sendEmailConfirmationTo($user)
     {
         $view = 'emails.confirm';
@@ -84,17 +84,18 @@ class UsersController extends Controller
         });
     }
 
-    //确认激活邮件
-    public function confirmEmail($token) {
+    //确认验证邮件
+    public function confirmEmail($token)
+    {
         $user = User::where('activation_token', $token)->firstOrFail();
 
         $user->activated = true;
         $user->activation_token = null;
         $user->save();
 
-        Auth::login($user);
-        session()->flash('success', '恭喜您，激活成功！');
-        return redirect()->route('users.show', [$user]);
+        Auth::logout();
+        session()->flash('success', '恭喜您，验证成功！');
+        return redirect()->route('login');
     }
 
     //编辑页面
@@ -105,7 +106,7 @@ class UsersController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    //编辑提交逻辑
+    //编辑提交
     public function update($id, Request $request)
     {
         $this->validate($request, [

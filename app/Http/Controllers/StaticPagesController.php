@@ -14,6 +14,7 @@ class StaticPagesController extends Controller
 {
     public function home()
     {
+        //若已登录，显示微博列表
         $feed_items = [];
         if (Auth::check()) {
             $feed_items = Auth::user()->feed()->paginate(30);
@@ -30,5 +31,10 @@ class StaticPagesController extends Controller
     public function about()
     {
         return view('static_pages.about');
+    }
+
+    public function blank()
+    {
+        return view('layouts.default');
     }
 }

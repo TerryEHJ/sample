@@ -66,7 +66,7 @@ class UsersController extends Controller
 
         $this->sendEmailConfirmationTo($user);
         session()->flash('success', '验证邮件已发送到您的注册邮箱上，请注意查收。');
-        return redirect('/blank');
+        return redirect()->route('blank');
     }
 
     //发送验证邮件
@@ -75,7 +75,7 @@ class UsersController extends Controller
         $view = 'emails.confirm';
         $data = compact('user');
         $from = 'terry.ehj@gmail.com';
-        $name = 'Terry';
+        $name = 'Terry Yi';
         $to = $user->email;
         $subject = '感谢注册 Sample 应用！请确认您的邮箱。';
 
@@ -111,7 +111,7 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:50',
-            'password' => 'confirmed|min:6'
+            'password' => 'confirmed|min:6|max:16'
         ]);
 
         $user = User::findOrFail($id);

@@ -39,6 +39,7 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    // 创建用户前，生成激活令牌
     public static function boot()
     {
         parent::boot();

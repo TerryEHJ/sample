@@ -20,6 +20,7 @@ class PasswordController extends Controller
 
     use ResetsPasswords;
 
+    // 重置成功后重定向到
     protected $redirectPath = '/';
 
     /**

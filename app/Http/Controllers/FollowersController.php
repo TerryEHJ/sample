@@ -12,6 +12,7 @@ use Auth;
 
 class FollowersController extends Controller
 {
+    // 只允许登录用户操作
     public function __construct()
     {
         $this->middleware('auth', [
@@ -19,6 +20,7 @@ class FollowersController extends Controller
         ]);
     }
 
+    // 关注
     public function store($id)
     {
         $user = User::findOrFail($id);
@@ -34,6 +36,7 @@ class FollowersController extends Controller
         return redirect()->route('users.show', $id);
     }
 
+    // 取消关注
     public function destroy($id)
     {
         $user = User::findOrFail($id);

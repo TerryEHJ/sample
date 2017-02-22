@@ -12,6 +12,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+    // 微博发博时间中文化
     public function boot()
     {
         Carbon::setLocale('zh');

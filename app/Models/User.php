@@ -49,13 +49,14 @@ class User extends Model implements AuthenticatableContract,
         });
     }
 
-    //头像地址
+    // 头像地址
     public function gravatar($size = '100')
     {
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 
+    // 一个用户对应多条微博
     public function statuses()
     {
         return $this->hasMany(Status::class);
@@ -70,16 +71,16 @@ class User extends Model implements AuthenticatableContract,
                               ->orderBy('created_at', 'desc');
     }
 
-    //用户被关注人数
-    public function followers()
-    {
-        return $this->belongsToMany(User::Class, 'followers', 'user_id', 'follower_id');
-    }
-
     //用户关注人数
     public function followings()
     {
         return $this->belongsToMany(User::Class, 'followers', 'follower_id', 'user_id');
+    }
+
+    //用户被关注人数
+    public function followers()
+    {
+        return $this->belongsToMany(User::Class, 'followers', 'user_id', 'follower_id');
     }
 
     //关注

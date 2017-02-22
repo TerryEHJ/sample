@@ -12,6 +12,7 @@ use Auth;
 
 class StatusesController extends Controller
 {
+    // 只允许登录用户操作
     public function __construct()
     {
         $this->middleware('auth', [
@@ -19,6 +20,7 @@ class StatusesController extends Controller
         ]);
     }
 
+    // 创建微博
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -31,6 +33,7 @@ class StatusesController extends Controller
         return redirect()->back();
     }
 
+    // 删除微博
     public function destroy($id)
     {
         $status = Status::findOrFail($id);

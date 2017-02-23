@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <footer class="footer">
     <small class="slogon">
-      <img class="brand-icon" src="http://s.gravatar.com/avatar/52cfbf02fd410af94ab8290a62a63ff2?s=64">
+      <img class="brand-icon" src="https://s.gravatar.com/avatar/52cfbf02fd410af94ab8290a62a63ff2?s=64">
         TerryE | Silence is Golden
       </a>
     </small>

@@ -16,6 +16,7 @@
       </div>
     </div>
 
-    <script src="/js/app.js"></script>
+    <!-- <script src="/js/app.js"></script> -->
+    <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>

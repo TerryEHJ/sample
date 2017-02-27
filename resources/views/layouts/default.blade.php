@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>@yield('title', 'Sample') - Laravel 入门教程</title>
+    <title>@yield('title', '小微博') - TerryE</title>
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>

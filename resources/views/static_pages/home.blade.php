@@ -21,9 +21,9 @@
     </div>
   @else
     <div class="jumbotron">
-      <h1>Hello Laravel</h1>
+      <h1>Hello World!</h1>
       <p class="lead">
-        你现在所看的是 <a href="https://laravel-china.org/laravel-tutorial/5.1">Laravel 入门教程</a> 的实力项目主页。
+        欢迎来到小微博。
       </p>
       <p>
         一切，将从这里开始。

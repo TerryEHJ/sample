@@ -1,3 +1,3 @@
-## 小微博
+### 教程
 
-参考：https://laravel-china.org/laravel-tutorial/5.1/about
+https://laravel-china.org/laravel-tutorial/5.1/about
